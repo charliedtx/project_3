@@ -5,7 +5,9 @@ function buildPlot() {
 
     console.log(response);
 
-    Plotly.plot("plot", response);
+    var data = response;
+
+    Plotly.plot("plot", data);
   });
 }
 
