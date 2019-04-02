@@ -20,6 +20,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db/baseball.sqlite"
 db = SQLAlchemy(app)
 
 from .models import People
+from .models import Batting
+from .models import Salaries
 
 
 # create route that renders index.html template
@@ -30,9 +32,9 @@ def home():
 
 
 # create route that returns data for plotting
-@app.route("/api/baseball")
-def baseball():
-    print('baseball!', file=sys.stderr)    
+@app.route("/api/people")
+def people():
+    print('people!', file=sys.stderr)    
     results = db.session.query(People.birthState, func.count(People.playerID)).group_by(People.birthState).all()
     state = [result[0] for result in results]
     players = [result[1] for result in results]
@@ -40,6 +42,24 @@ def baseball():
     trace = {
         "x": state,
         "y": players,
+        "type": "bar"
+    }
+
+    return jsonify(trace)
+
+# create route that returns data for plotting
+@app.route("/api/batting")
+def batting():
+    print('batting!', file=sys.stderr)    
+    results = db.session.query(Batting.yearID, func.sum(Batting.HR)).group_by(Batting.yearID).all()
+    print('batting!', file=sys.stderr)    
+
+    year = [result[0] for result in results]
+    homeruns = [result[1] for result in results]
+
+    trace = {
+        "x": year,
+        "y": homeruns,
         "type": "bar"
     }
 
