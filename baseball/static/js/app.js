@@ -7,7 +7,7 @@ function buildPlot() {
 
     var data = response;
 
-    Plotly.plot("plot", data);
+    Plotly.newPlot("plot", [data]);
   });
 }
 
