@@ -27,14 +27,14 @@ from .models import Salaries
 # create route that renders index.html template
 @app.route("/")
 def home():
-    print('Hello world!', file=sys.stderr)    
+    print('Hello world!', file=sys.stderr)
     return render_template("index.html")
 
 
 # create route that returns data for plotting
 @app.route("/api/people")
 def people():
-    print('people!', file=sys.stderr)    
+    print('people!', file=sys.stderr)
     results = db.session.query(People.birthState, func.count(People.playerID)).group_by(People.birthState).all()
     state = [result[0] for result in results]
     players = [result[1] for result in results]
@@ -50,9 +50,9 @@ def people():
 # create route that returns data for plotting
 @app.route("/api/batting")
 def batting():
-    print('batting!', file=sys.stderr)    
+    print('batting!', file=sys.stderr)
     results = db.session.query(Batting.yearID, func.sum(Batting.HR)).group_by(Batting.yearID).all()
-    print('batting!', file=sys.stderr)    
+    print('batting!', file=sys.stderr)
 
     year = [result[0] for result in results]
     homeruns = [result[1] for result in results]
@@ -60,6 +60,23 @@ def batting():
     trace = {
         "x": year,
         "y": homeruns,
+        "type": "bar"
+    }
+
+    return jsonify(trace)
+
+@app.route("/api/attendance")
+def attendance():
+    print('attendance!', file=sys.stderr)
+    results = db.session.query(Home_games.team, func.sum(Home_games.attendance)).group_by(Home_games.year).all()
+    print('attendance!', file=sys.stderr)
+
+    year = [result[0] for result in results]
+    homeruns = [result[1] for result in results]
+
+    trace = {
+        "x": team,
+        "y": attendance,
         "type": "bar"
     }
 
