@@ -22,6 +22,7 @@ db = SQLAlchemy(app)
 from .models import People
 from .models import Batting
 from .models import Salaries
+from .models import HomeGames
 
 
 # create route that renders index.html template
@@ -68,7 +69,7 @@ def batting():
 @app.route("/api/attendance")
 def attendance():
     print('attendance!', file=sys.stderr)
-    results = db.session.query(Home_games.team, func.sum(Home_games.attendance)).group_by(Home_games.year).all()
+    results = db.session.query(HomeGames.team, func.sum(HomeGames.attendance)).group_by(HomeGames.year).all()
     print('attendance!', file=sys.stderr)
 
     year = [result[0] for result in results]
