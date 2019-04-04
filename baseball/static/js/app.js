@@ -27,3 +27,18 @@ d3.json(url).then(function(response) {
 }
 
 buildHomerunPlot()
+
+function buildAttendancePlot() {
+  /* data route */
+var url = "/api/attendance";
+d3.json(url).then(function(response) {
+
+  console.log(response);
+
+  var data = response;
+
+  Plotly.newPlot("attendance", [data]);
+});
+}
+
+buildAttendancePlot()
