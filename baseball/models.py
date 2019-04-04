@@ -62,21 +62,21 @@ class Salaries(db.Model):
 
 class HomeGames(db.Model):
     __tablename__ = 'home_games'
-    year.key = db.Column(db.Integer, primary_key=True)
-    league.key = db.Column(db.String(2), primary_key=True)	
-    team.key = db.Column(db.String(3), primary_key=True)
-    park.key = db.Column(db.String(15), primary_key=True)
-    span.first = db.Column (db.Date)
-    span.last = db.Column (db.Date)
+    year = db.Column(db.Integer, primary_key=True)
+    league = db.Column(db.String(2), primary_key=True)	
+    team = db.Column(db.String(3), primary_key=True)
+    park = db.Column(db.String(15), primary_key=True)
+    first = db.Column (db.Date)
+    last = db.Column (db.Date)
     games = db.Column(db.Integer)
     openings = db.Column(db.Integer)
     attendance = db.Column(db.Integer)
 
 class Parks(db.Model):
     __tablename__ = 'parks'
-    park.key = db.Column(db.String(10), primary_key=True)
-    park.name = db.Column(db.String(64))
-    park.alias = db.Column(db.String(64))
+    park_id = db.Column(db.String(10), primary_key=True)
+    name = db.Column(db.String(64))
+    alias = db.Column(db.String(64))
     city = db.Column(db.String(64))
     state = db.Column(db.String(2))
     country = db.Column(db.String(2))
