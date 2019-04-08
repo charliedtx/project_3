@@ -63,9 +63,6 @@ def batting():
         "y": homeruns,
         "type": "bar"
     }
-    plt.title('My title')
-    plt.xlabel('categories')
-    plt.ylabel('values')
 
     return jsonify(trace)
 
