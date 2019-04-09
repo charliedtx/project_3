@@ -40,7 +40,7 @@ d3.json(url).then(function(response) {
 });
 }
 
-var button = d3.selectAll(".dropdown-item").on("click", function(){
+d3.selectAll(".dropdown-item").on("click", function(){
   switch (this.textContent){
     case "@plot yearly-attendance":
       buildAttendancePlot();
