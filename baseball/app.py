@@ -63,16 +63,13 @@ def batting():
         "y": homeruns,
         "type": "bar"
     }
-    plt.title('My title')
-    plt.xlabel('categories')
-    plt.ylabel('values')
 
     return jsonify(trace)
 
 @app.route("/api/attendance")
 def attendance():
     print('attendance!', file=sys.stderr)
-    results = db.session.query(HomeGames.team, func.sum(HomeGames.attendance)).group_by(HomeGames.team).all()
+    results = db.session.query(HomeGames.year, func.sum(HomeGames.attendance)).filter(HomeGames.year > 1969).group_by(HomeGames.year).all()
     print('attendance!', file=sys.stderr)
 
     team = [result[0] for result in results]
@@ -81,7 +78,7 @@ def attendance():
     trace = {
         "x": team,
         "y": attendance,
-        "type": "bar"
+        "type": "line"
     }
 
     return jsonify(trace)

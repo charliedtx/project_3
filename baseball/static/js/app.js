@@ -21,8 +21,11 @@ d3.json(url).then(function(response) {
   console.log(response);
 
   var data = response;
+  var layout = {
+            "title": "Homeruns per Year"
+  }
 
-  Plotly.newPlot("batter", [data]);
+  Plotly.newPlot("batter", [data], layout);
 });
 }
 
@@ -36,8 +39,14 @@ d3.json(url).then(function(response) {
   console.log(response);
 
   var data = response;
+  var layout = {
+          "title": 'Yearly Attendance for MLB (by Team)',
+          "xaxis": {
+                  "tickangle": -45
+          }
+  };
 
-  Plotly.newPlot("attendance", [data]);
+  Plotly.newPlot("attendance", [data], layout);
 });
 }
 
