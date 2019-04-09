@@ -1,26 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html>
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <title>Baseball!</title>
-      <link rel="stylesheet" href="../static/css/style.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baseball!</title>
+    <link href="../static/css/bootstrap-4.3.1.css" rel="stylesheet" type="text/css">
   </head>
-  <h1 align="center">Project 2</h1>
-  <h1 align="center">Baseball</h1>
-  <h3 align="center">Gabby, Charlie, Clark, and John</h3>
   <body>
-    <div class="my-background">
-      <img src="https://stmed.net/sites/default/files/baseball-wallpapers-30924-9021151.jpg">
+    <div class="jumbotron" background="">
+      <h1 class="display-3">Hello! Welcome to the World of Baseball!</h1>
+      <h4>by Gabby, John, Clark and Charlie</h4>
+      <p class="lead">Have you ever been curious about baseball statistics? Yeah, neither have we, but bare with us anyway. Baseball is an exceptional source for data.</p>
+      <hr class="my-4">
+      <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+        <button type="button" class="btn btn-secondary">@home</button>
+        <button type="button" class="btn btn-secondary">@data</button>
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> @plots </button>
+            <div class="dropdown-menu"> 
+                <div class="dropdown-item">@plot yearly-attendance</div> 
+                <div class="dropdown-item" >@plot homeruns</div> 
+            </div>
+        </div>
+      </div>
     </div>
-    <div id="people"></div>
-    <div id="batter"></div>
-    <div id="attendance"></div>
+    <div id="plot"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="../static/js/app.js"></script>
   </body>
-
 </html>

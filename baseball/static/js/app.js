@@ -7,11 +7,9 @@ function buildPlot() {
 
     var data = response;
 
-    Plotly.newPlot("people", [data]);
+    Plotly.newPlot("plot", [data]);
   });
 }
-
-buildPlot();
 
 function buildHomerunPlot() {
   /* data route */
@@ -25,11 +23,9 @@ d3.json(url).then(function(response) {
             "title": "Homeruns per Year"
   }
 
-  Plotly.newPlot("batter", [data], layout);
+  Plotly.newPlot("plot", [data], layout);
 });
 }
-
-buildHomerunPlot()
 
 function buildAttendancePlot() {
   /* data route */
@@ -39,15 +35,19 @@ d3.json(url).then(function(response) {
   console.log(response);
 
   var data = response;
-  var layout = {
-          "title": 'Yearly Attendance for MLB (by Team)',
-          "xaxis": {
-                  "tickangle": -45
-          }
-  };
 
-  Plotly.newPlot("attendance", [data], layout);
+  Plotly.newPlot("plot", [data]);
 });
 }
 
-buildAttendancePlot()
+var button = d3.selectAll(".dropdown-item").on("click", function(){
+  switch (this.textContent){
+    case "@plot yearly-attendance":
+      buildAttendancePlot();
+      break;
+    case "@plot homeruns":
+      buildHomerunPlot();
+      break;
+    default:
+      buildPlot(); 
+}});
