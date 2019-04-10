@@ -68,7 +68,7 @@ def salaries():
     trace = {
         "x": yearID,
         "y": salary,
-        "type": "line"
+        "type": "bar"
     }
 
     return jsonify(trace)
