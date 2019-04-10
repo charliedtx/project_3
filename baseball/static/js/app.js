@@ -4,9 +4,78 @@ function buildPlot() {
   d3.json(url).then(function(response) {
     var data = response;
     var layout = {
-      title: "Homerun data"
+      title: "Homeruns Over Time",
+      annotations: [
+        {
+          x: 1981,
+          y: 1781,
+          xref: 'x',
+          yref: 'y',
+          text: '81 Player Strike',
+          showarrow: true,
+          arrowhead: 6,
+          ax: 0,
+          ay: -120
+        },
+        {
+          x: 1918,
+          y: 1500,
+          xref: 'x',
+          yref: 'y',
+          text: 'WWI',
+          showarrow: true,
+          arrowhead: 6,
+          ax: 0,
+          ay: -75
+        },
+        {
+          x: 1943,
+          y: 2500,
+          xref: 'x',
+          yref: 'y',
+          text: 'WWII',
+          showarrow: true,
+          arrowhead: 6,
+          ax: 0,
+          ay: -75
+        }
+      ],
+      shapes: [
+        // 1st highlight during Feb 4 - Feb 6
+        {
+            type: 'rect',
+            // x-reference is assigned to the x-values
+            xref: 'x',
+            // y-reference is assigned to the plot paper [0,1]
+            yref: 'y',
+            x0: 1916.5,
+            y0: 0,
+            x1: 1919.5,
+            y1: 1500,
+            fillcolor: '#d3d3d3',
+            opacity: .3,
+            line: {
+                width: 1
+            }
+        },
+        {
+          type: 'rect',
+          // x-reference is assigned to the x-values
+          xref: 'x',
+          // y-reference is assigned to the plot paper [0,1]
+          yref: 'y',
+          x0: 1940.5,
+          y0: 0,
+          x1: 1945.5,
+          y1: 2500,
+          fillcolor: '#d3d3d3',
+          opacity: .3,
+          line: {
+              width: 1
+          }
+      }
+      ]
     };
-
     Plotly.newPlot("plot", [data], layout);
   });
 }
