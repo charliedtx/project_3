@@ -28,14 +28,12 @@ from .models import HomeGames
 # create route that renders index.html template
 @app.route("/")
 def home():
-    print('Hello world!', file=sys.stderr)
     return render_template("index.html")
 
 
 # create route that returns data for plotting
 @app.route("/api/people")
 def people():
-    print('people!', file=sys.stderr)
     results = db.session.query(Salaries.yearID, func.avg(Salaries.salary)).group_by(Salaries.yearID).all()
     state = [result[0] for result in results]
     players = [result[1] for result in results]
@@ -49,12 +47,9 @@ def people():
     return jsonify(trace)
 
 # create route that returns data for plotting
-@app.route("/api/batting")
+@app.route("/api/homeruns")
 def batting():
-    print('batting!', file=sys.stderr)
     results = db.session.query(Batting.yearID, func.sum(Batting.HR)).group_by(Batting.yearID).all()
-    print('batting!', file=sys.stderr)
-
     year = [result[0] for result in results]
     homeruns = [result[1] for result in results]
 
@@ -68,10 +63,7 @@ def batting():
 
 @app.route("/api/attendance")
 def attendance():
-    print('attendance!', file=sys.stderr)
     results = db.session.query(HomeGames.year, func.sum(HomeGames.attendance)).filter(HomeGames.year > 1969).group_by(HomeGames.year).all()
-    print('attendance!', file=sys.stderr)
-
     year = [result[0] for result in results]
     attendance = [result[1] for result in results]
 
@@ -83,12 +75,9 @@ def attendance():
 
     return jsonify(trace)
 
-@app.route("/api/Salaries")
+@app.route("/api/salaries")
 def salaries():
-    print('salary!', file=sys.stderr)
     results = db.session.query(Salaries.yearID, func.avg(Salaries.salary)).filter(Salaries.yearID > 1985).group_by(Salaries.yearID).all()
-    print('salary!', file=sys.stderr)
-
     yearID = [result[0] for result in results]
     salary = [result[1] for result in results]
 

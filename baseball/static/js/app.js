@@ -2,25 +2,19 @@ function buildPlot() {
     /* data route */
   var url = "/api/people";
   d3.json(url).then(function(response) {
-
-    console.log(response);
-
     var data = response;
     var layout = {
       title: "Salaries (Average per Year)"
     };
 
-    Plotly.newPlot("plot", [data]);
+    Plotly.newPlot("plot", [data], layout);
   });
 }
 
 function buildHomerunPlot() {
   /* data route */
-var url = "/api/batting";
+var url = "/api/homeruns";
 d3.json(url).then(function(response) {
-
-  console.log(response);
-
   var data = response;
   var layout = {
             "title": "Homeruns per Year"
@@ -34,9 +28,6 @@ function buildAttendancePlot() {
   /* data route */
 var url = "/api/attendance";
 d3.json(url).then(function(response) {
-
-  console.log(response);
-
   var data = response;
   var layout = {
           title: 'Yearly Attendance for MLB (by Team)',
@@ -68,17 +59,14 @@ d3.json(url).then(function(response) {
     }
   ]
   };
-  Plotly.newPlot("plot", [data],layout);
+  Plotly.newPlot("plot", [data], layout);
 });
 }
 
 function buildSalariesPlot() {
   /* data route */
-var url = "/api/Salaries";
+var url = "/api/salaries";
 d3.json(url).then(function(response) {
-
-  console.log(response);
-
   var data = response;
 
   Plotly.newPlot("plot", [data]);
@@ -93,7 +81,7 @@ d3.selectAll(".dropdown-item").on("click", function(){
     case "@plot homeruns":
       buildHomerunPlot();
       break;
-    case "@plot yearly-attendance":
+    case "@plot salaries":
       buildSalariesPlot();
       break;
     default:
