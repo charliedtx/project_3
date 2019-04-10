@@ -173,7 +173,7 @@ function buildSalariesPlot() {
         showarrow: true,
         arrowhead: 6,
         ax: 70,
-        ay: 50
+        ay: 80
       },
       {
         x: 1991,
