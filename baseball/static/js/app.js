@@ -103,6 +103,25 @@ function buildAttendancePlot() {
         ay: 0
       },
       {
+        x: 2007,
+        y: 79503680,
+        xref: 'x',
+        yref: 'y',
+        text: 'Mitchell Report',
+        showarrow: true,
+        arrowhead: 6,
+        ax: 0,
+        ay: 50
+      },
+      {
+        x: 1995,
+        y: 75000000,
+        xref: 'x',
+        yref: 'y',
+        text: 'Steroid Era - 16.5/20M Att. Growth',
+        showarrow: false,
+      },
+      {
         x: 1994,
         y: 49984410,
         xref: 'x',
@@ -113,7 +132,22 @@ function buildAttendancePlot() {
         ax: 0,
         ay: 50
       }
-    ]
+    ],
+    shapes: [
+      {
+          type: 'rect',
+          xref: 'x',
+          yref: 'y',
+          x0: 1990,
+          y0: 49000000,
+          x1: 2000,
+          y1: 73000000,
+          fillcolor: '#29CAFD',
+          opacity: .25,
+          line: {
+              width: .25
+          }
+      }]
     };
     Plotly.newPlot("plot", [data], layout);
   });
