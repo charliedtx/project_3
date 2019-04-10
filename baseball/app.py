@@ -72,11 +72,11 @@ def attendance():
     results = db.session.query(HomeGames.year, func.sum(HomeGames.attendance)).filter(HomeGames.year > 1969).group_by(HomeGames.year).all()
     print('attendance!', file=sys.stderr)
 
-    team = [result[0] for result in results]
+    year = [result[0] for result in results]
     attendance = [result[1] for result in results]
 
     trace = {
-        "x": team,
+        "x": year,
         "y": attendance,
         "type": "line"
     }
