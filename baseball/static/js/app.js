@@ -124,9 +124,39 @@ function buildSalariesPlot() {
   var url = "/api/salaries";
   d3.json(url).then(function(response) {
     var data = response;
+    var layout = {
+            title: 'Avg. Annual MLB Salary (by Year)',
+            xaxis: {
+                    tickangle: -45
+            },
+            annotations: [
+      {
+        x: 2012,
+        y: 3458421,
+        xref: 'x',
+        yref: 'y',
+        text: '2012 Revenue Spike Cable Broadcasting Packages & Collective Bargaining Agreements',
+        showarrow: true,
+        arrowhead: 6,
+        ax: 70,
+        ay: 50
+      },
+      {
+        x: 1991,
+        y: 894961,
+        xref: 'x',
+        yref: 'y',
+        text: '1990 min wage increase (32%)',
+        showarrow: true,
+        arrowhead: 6,
+        ax: -50,
+        ay: -50
+      }
+    ]
+    };
 
-    Plotly.newPlot("plot", [data]);
-  });
+    Plotly.newPlot("plot", [data], layout);
+});
 }
 
 d3.selectAll(".dropdown-item").on("click", function(){
