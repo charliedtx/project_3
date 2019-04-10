@@ -30,22 +30,6 @@ from .models import HomeGames
 def home():
     return render_template("index.html")
 
-
-# create route that returns data for plotting
-@app.route("/api/people")
-def people():
-    results = db.session.query(Salaries.yearID, func.avg(Salaries.salary)).group_by(Salaries.yearID).all()
-    state = [result[0] for result in results]
-    players = [result[1] for result in results]
-
-    trace = {
-        "x": state,
-        "y": players,
-        "type": "scatter"
-    }
-
-    return jsonify(trace)
-
 # create route that returns data for plotting
 @app.route("/api/homeruns")
 def batting():
