@@ -101,21 +101,21 @@ function buildSalariesPlot() {
 
 d3.selectAll(".dropdown-item").on("click", function(){
   switch (this.textContent){
-    case "@plot yearly-attendance":
+    case "Yearly Attendance":
       d3.selectAll("img").remove();
       buildAttendancePlot();
       break;
-    case "@plot homeruns":
+    case "Homeruns":
       d3.selectAll("img").remove();
       buildHomerunPlot();
       break;
-    case "@plot salaries":
+    case "Salaries":
       d3.selectAll("img").remove();
       buildSalariesPlot();
       d3.select("#plot").append('img')
       .attr('src','../static/img/RplotSalary.png')
       break;
-    case "@plot runsPerGame":
+    case "Runs per Game":
       Plotly.purge('plot');
       d3.selectAll("img").remove();
       d3.select("#plot").append('img')
