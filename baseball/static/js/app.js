@@ -6,6 +6,9 @@ function buildPlot() {
     console.log(response);
 
     var data = response;
+    var layout = {
+      title: "Salaries (Average per Year)"
+    };
 
     Plotly.newPlot("plot", [data]);
   });
@@ -69,6 +72,19 @@ d3.json(url).then(function(response) {
 });
 }
 
+function buildSalariesPlot() {
+  /* data route */
+var url = "/api/Salaries";
+d3.json(url).then(function(response) {
+
+  console.log(response);
+
+  var data = response;
+
+  Plotly.newPlot("plot", [data]);
+});
+}
+
 d3.selectAll(".dropdown-item").on("click", function(){
   switch (this.textContent){
     case "@plot yearly-attendance":
@@ -76,6 +92,9 @@ d3.selectAll(".dropdown-item").on("click", function(){
       break;
     case "@plot homeruns":
       buildHomerunPlot();
+      break;
+    case "@plot yearly-attendance":
+      buildSalariesPlot();
       break;
     default:
       buildPlot();

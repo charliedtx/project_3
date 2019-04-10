@@ -36,14 +36,14 @@ def home():
 @app.route("/api/people")
 def people():
     print('people!', file=sys.stderr)
-    results = db.session.query(People.birthState, func.count(People.playerID)).group_by(People.birthState).all()
+    results = db.session.query(Salaries.yearID, func.avg(Salaries.salary)).group_by(Salaries.yearID).all()
     state = [result[0] for result in results]
     players = [result[1] for result in results]
 
     trace = {
         "x": state,
         "y": players,
-        "type": "bar"
+        "type": "scatter"
     }
 
     return jsonify(trace)
@@ -79,6 +79,23 @@ def attendance():
         "x": year,
         "y": attendance,
         "type": "line"
+    }
+
+    return jsonify(trace)
+
+@app.route("/api/Salaries")
+def salaries():
+    print('salary!', file=sys.stderr)
+    results = db.session.query(Salaries.yearID, func.avg(Salaries.salary)).filter(Salaries.yearID > 1985).group_by(Salaries.yearID).all()
+    print('salary!', file=sys.stderr)
+
+    yearID = [result[0] for result in results]
+    salary = [result[1] for result in results]
+
+    trace = {
+        "x": yearID,
+        "y": salary,
+        "type": "bar"
     }
 
     return jsonify(trace)
