@@ -1,1 +1,1 @@
-web: gunicorn baseball:app
+web: gunicorn baseball.app:app
