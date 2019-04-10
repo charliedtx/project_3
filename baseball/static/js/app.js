@@ -112,6 +112,8 @@ d3.selectAll(".dropdown-item").on("click", function(){
     case "@plot salaries":
       d3.selectAll("img").remove();
       buildSalariesPlot();
+      d3.select("#plot").append('img')
+      .attr('src','../static/img/RplotSalary.png')
       break;
     case "@plot runsPerGame":
       Plotly.purge('plot');
