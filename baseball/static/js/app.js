@@ -12,32 +12,35 @@ function buildPlot() {
           xref: 'x',
           yref: 'y',
           text: '81 Player Strike',
-          showarrow: true,
-          arrowhead: 6,
           ax: 0,
           ay: -120
         },
         {
           x: 1918,
-          y: 1500,
+          y: 5750,
           xref: 'x',
           yref: 'y',
           text: 'WWI',
-          showarrow: true,
-          arrowhead: 6,
           ax: 0,
-          ay: -75
+          ay: 0
         },
         {
           x: 1943,
-          y: 2500,
+          y: 5750,
           xref: 'x',
           yref: 'y',
           text: 'WWII',
-          showarrow: true,
-          arrowhead: 6,
           ax: 0,
-          ay: -75
+          ay: 0
+        },
+        {
+          x: 1995,
+          y: 5750,
+          xref: 'x',
+          yref: 'y',
+          text: 'Steroid Era',
+          ax: 0,
+          ay: 0
         }
       ],
       shapes: [
@@ -51,7 +54,7 @@ function buildPlot() {
             x0: 1916.5,
             y0: 0,
             x1: 1919.5,
-            y1: 1500,
+            y1: 6000,
             fillcolor: '#d3d3d3',
             opacity: .3,
             line: {
@@ -67,13 +70,27 @@ function buildPlot() {
           x0: 1940.5,
           y0: 0,
           x1: 1945.5,
-          y1: 2500,
+          y1: 6000,
           fillcolor: '#d3d3d3',
           opacity: .3,
           line: {
               width: 1
           }
-      }
+      },
+      {
+        type: 'rect',
+        xref: 'x',
+        yref: 'y',
+        x0: 1990,
+        y0: 0,
+        x1: 2000,
+        y1: 6000,
+        fillcolor: '#d3d3d3',
+        opacity: .25,
+        line: {
+            width: .25
+        }
+    }
       ]
     };
     Plotly.newPlot("plot", [data], layout);
